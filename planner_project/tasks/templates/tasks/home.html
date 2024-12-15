@@ -181,27 +181,14 @@
             <p>Приложение поможет вам организовать свое время и повысить продуктивность.</p>
         </section>
 
-        <!-- Форма авторизации -->
         <div class="form-container">
             <h3>Вход в систему</h3>
-            <form method="POST" action="{% url 'home' %}">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Логин" required>
-                <input type="password" name="password" placeholder="Пароль" required>
-                <button type="submit" name="login">Войти</button>
-            </form>
+            <a href="{% url 'login' %}">Войти</a>
         </div>
 
-        <!-- Форма регистрации -->
         <div class="form-container">
             <h3>Регистрация</h3>
-            <form method="POST" action="{% url 'home' %}">
-                {% csrf_token %}
-                <input type="text" name="username" placeholder="Логин" required>
-                <input type="email" name="email" placeholder="Email" required>
-                <input type="password" name="password" placeholder="Пароль" required>
-                <button type="submit" name="register">Зарегистрироваться</button>
-            </form>
+            <a href="{% url 'register' %}">Зарегистрироваться</a>
         </div>
     </main>
     <footer>
