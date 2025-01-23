@@ -1,216 +1,143 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Главная страница планера</title>
+    <title>Добро пожаловать в MyPlans</title>
     <style>
-        body {
-            font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        html, body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 30%, #bbdefb 100%);
+            color: #444;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;  /* Нежный светлый фон */
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
+            height: 100%;
+            overflow: hidden;
         }
-
-        body.dark-mode {
-            background-color: #121212;  /* Темный фон */
-            color: #ffffff;  /* Светлый текст */
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: 0;
+            animation: fadeBackground 10s infinite alternate;
         }
-
-        header {
-            background: #66BB6A;  /* Насыщенный зеленый цвет */
-            color: #ffffff;
-            padding: 20px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            border-radius: 0 0 16px 16px;  /* Закругление нижних углов */
+        @keyframes fadeBackground {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.7;
+            }
         }
-
-        header.dark-mode {
-            background: #4CAF50;  /* Темный зеленый для заголовка */
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s, transform 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: #FFAB91;  /* Нежный оранжевый оттенок при наведении */
-            transform: scale(1.05);  /* Увеличение при наведении */
-        }
-
-        main {
-            padding: 20px;
-            max-width: 800px;
-            margin: 20px auto;
-            background: #ffffff;
-            border-radius: 16px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        main.dark-mode {
-            background: #1E1E1E;  /* Темный фон для основного контента */
-        }
-
-        section {
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            color: #388E3C;  /* Насыщенный зеленый цвет заголовков */
-            margin-bottom: 10px;
-        }
-
-        h2.dark-mode {
-            color: #A5D6A7;  /* Светлый зеленый для заголовков в темной теме */
-        }
-
-        p {
-            line-height: 1.6;
-            margin: 10px 0;
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #66BB6A;
-            color: #ffffff;
+        .center {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             position: relative;
-            bottom: 0;
-            width: 100%;
-            border-radius: 16px 16px 0 0;  /* Закругление верхних углов */
+            z-index: 1;
         }
-
-        footer.dark-mode {
-            background: #4CAF50;  /* Темный зеленый для подвала */
+        .content {
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s;
         }
-
-        footer p {
-            margin: 0;
+        .content:hover {
+            transform: scale(1.02);
         }
-
-        .form-container {
-            margin-top: 20px;
-            padding: 20px;
-            background: #f1f1f1;  /* Нежный серый фон для форм */
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s, color 0.3s;
+        h1 {
+            font-size: 4rem;
+            letter-spacing: -0.2rem;
+            color: #00cbff;
+            margin: 0 0 20px 0;
+            background: linear-gradient(258.25deg, #00cbff 12%, #7300ff 83%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s forwards;
         }
-
-        .form-container.dark-mode {
-            background: #2C2C2C;  /* Темный фон для форм */
+        h2 {
+            font-size: 2rem;
+            letter-spacing: -0.1rem;
+            color: #0084ff;
+            margin: 20px 0;
+            background: linear-gradient(258.25deg, #7300ff 12%, #7300ff 83%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s forwards;
+            animation-delay: 0.5s;
         }
-
-        .form-container h3 {
-            color: #388E3C;  /* Насыщенный зеленый цвет заголовков форм */
+        .btn {
+            display: inline-block;
+            background: #fff;
+            position: relative;
+            padding: 1rem 3rem;
+            text-align: center;
+            text-transform: uppercase;
+            color: #5732ff; /* Цвет текста по умолчанию */
+            border-radius: 0.6rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 600;
+            letter-spacing: 0.1rem;
+            margin: 30px;
+            transition: color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-
-        .form-container h3.dark-mode {
-            color: #A5D6A7;  /* Светлый зеленый для заголовков форм в темной теме */
+        .btn:hover {
+            color: #fff; /* Цвет текста при наведении */
+            transform: translateY(-3px);
         }
-
-        .form-container input[type="text"],
-        .form-container input[type="password"],
-        .form-container input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .btn:hover::after {
+            top: -3px;
+            bottom: -3px;
+            left: -3px;
+            right: -3px;
         }
-
-        .form-container button {
-            background-color: #388E3C;  /* Насыщенный зеленый цвет кнопок */
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+        .btn::after {
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: -1px;
+            right: -1px;
+            background: linear-gradient(to left, #00cbff 5%, #7300ff 95%);
+            content: "";
+            z-index: -1;
+            border-radius: 0.8rem;
+            transition-duration: .15s;
+            transition-property: all;
         }
-
-        .form-container button:hover {
-            background-color: #2E7D32;  /* Темный оттенок при наведении */
-        }
-
-        .theme-toggle {
-            margin: 20px;
-            cursor: pointer;
-            padding: 10px 20px;
-            background-color: #FFAB91;  /* Нежный оранжевый цвет для кнопки переключения темы */
-            color: white;
-            border: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-
-        .theme-toggle:hover {
-            background-color: #FF7043;  /* Темный оттенок при наведении */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
-
 </head>
 <body>
-    <header>
-        <h1>Эффективно управляй своим временем вместе с MyPlans!</h1>
-        <button class="theme-toggle" onclick="toggleTheme()">Переключить тему</button>
-    </header>
-    <main>
-        <section>
-            <h2>Управляйте своими задачами легко и удобно!</h2>
-            <p>Создавайте, редактируйте и удаляйте задачи. Устанавливайте приоритеты и сроки выполнения.</p>
-            <p>Приложение поможет вам организовать свое время и повысить продуктивность.</p>
-        </section>
-
-        <div class="form-container">
-            <h3>Вход в систему</h3>
-            <a href="{% url 'login' %}">Войти</a>
+    <div class="background-animation"></div>
+    <div class="center">
+        <div class="content">
+            <h1>Добро пожаловать в MyPlans</h1>
+            <h2>Современное приложение для планирования и управления задачами</h2>
+            <a class="btn" href="{% url 'login' %}">Войти</a>
         </div>
-
-        <div class="form-container">
-            <h3>Регистрация</h3>
-            <a href="{% url 'register' %}">Зарегистрироваться</a>
-        </div>
-    </main>
-    <footer>
-        <p>&copy; 2024 MyPlans. Все права защищены.</p>
-    </footer>
-
-    <script>
-        function toggleTheme() {
-            const body = document.body;
-            const header = document.querySelector('header');
-            const footer = document.querySelector('footer');
-            const formContainers = document.querySelectorAll('.form-container');
-            const h2Elements = document.querySelectorAll('h2');
-            const h3Elements = document.querySelectorAll('.form-container h3');
-
-            body.classList.toggle('dark-mode');
-            header.classList.toggle('dark-mode');
-            footer.classList.toggle('dark-mode');
-            formContainers.forEach(container => container.classList.toggle('dark-mode'));
-            h2Elements.forEach(h2 => h2.classList.toggle('dark-mode'));
-            h3Elements.forEach(h3 => h3.classList.toggle('dark-mode'));
-        }
-    </script>
+    </div>
 </body>
 </html>

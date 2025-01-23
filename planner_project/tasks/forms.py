@@ -1,14 +1,9 @@
 from django import forms
-from .models import Task, Category
+from .models import Task
 
 
-class TaskForm(forms.ModelForm):
+class TaskCreateForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'description', 'due_date', 'category', 'priority']
-
-
-class CategoryForm(forms.ModelForm):
-    class Meta:
-        model = Category
-        fields = ['name']
+        fields = ['title', 'description', 'due_date', 'priority', 'category', 'user']
+        read_only_fields = ['user']

@@ -1,12 +1,136 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 30%, #bbdefb 100%);
+            color: #444;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: 0;
+            animation: fadeBackground 10s infinite alternate;
+        }
+        @keyframes fadeBackground {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+        .form-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            width: 420px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Центрирование содержимого */
+            text-align: center; /* Центрирование текста */
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #00cbff;
+            margin-bottom: 20px;
+            background: linear-gradient(258.25deg, #00cbff 12%, #7300ff 83%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s forwards;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 8px; /* Уменьшено расстояние между полями ввода */
+            width: 100%; /* Ширина формы */
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            text-align: left;
+            margin-bottom: 10px;
+            width: calc(100% - 20px); /* Установка ширины для полей ввода */
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #00cbff;
+            outline: none;
+        }
+        button {
+            background: #0084ff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+            width: 100%; /* Ширина кнопки */
+        }
+        button:hover {
+            background: #7300ff;
+            transform: translateY(-2px);
+        }
+        .link-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        a {
+            color: #0084ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #7300ff;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div>
 
-{% block content %}
-<div class="form-container">
-    <h3>Вход в систему</h3>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Войти</button>
-    </form>
-</div>
-{% endblock %}
+    <div class="form-container">
+        <h1>Вход в систему</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Войти</button>
+        </form>
+        <div class="link-container">
+            <p><a href="{% url 'register' %}">Нет аккаунта? Зарегистрироваться</a></p>
+        </div>
+    </div>
+</body>
+</html>

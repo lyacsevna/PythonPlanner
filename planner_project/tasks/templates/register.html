@@ -1,12 +1,128 @@
-{% extends 'base.html' %}
-
-{% block content %}
-<div class="form-container">
-    <h3>Регистрация</h3>
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Зарегистрироваться</button>
-    </form>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 30%, #bbdefb 100%);
+            color: #444;
+            margin: 0;
+            height: 100vh; /* Высота окна */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://source.unsplash.com/random/1920x1080') no-repeat center center fixed;
+            background-size: cover;
+            opacity: 0.5;
+            z-index: 0;
+            animation: fadeBackground 10s infinite alternate;
+        }
+        @keyframes fadeBackground {
+            0% {
+                opacity: 0.5;
+            }
+            100% {
+                opacity: 0.7;
+            }
+        }
+        .form-container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 20px;
+            width: 420px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #00cbff;
+            margin-bottom: 20px;
+            background: linear-gradient(258.25deg, #00cbff 12%, #7300ff 83%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeIn 1.5s forwards;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        input[type="text"], input[type="password"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        input[type="text"]:focus, input[type="password"]:focus {
+            border-color: #00cbff;
+            outline: none;
+        }
+        button {
+            background: #0084ff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background: #7300ff;
+            transform: translateY(-2px);
+        }
+        .link-container {
+            text-align: center; /* Центрирование текста */
+            margin-top: 20px; /* Отступ сверху */
+        }
+        a {
+            color: #0084ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #7300ff;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation"></div> <!-- Добавлено для фона -->
+    <div class="form-container">
+        <h1>Регистрация</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }} <!-- Вывод формы -->
+            <button type="submit">Зарегистрироваться</button>
+        </form>
+        <div class="link-container">
+            <p><a href="{% url 'login' %}">Уже есть аккаунт? Войти</a></p>
+        </div>
+    </div>
+</body>
+</html>
