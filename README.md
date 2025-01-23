@@ -1,7 +1,7 @@
 # Mini-Scheduler
 
 ## Description
-Mini-Scheduler is a simple task management application built with Django. It allows users to add, edit, and delete tasks, as well as manage their status. This application is perfect for anyone looking to organize their tasks and increase productivity.
+Mini-Scheduler is a simple task management application built with Django. It allows users to add, edit, and delete tasks, as well as manage their status. 
 
 ## Installation
 
@@ -14,10 +14,17 @@ Mini-Scheduler is a simple task management application built with Django. It all
 1. Clone the repository:
 ```bash
    git clone https://github.com/lyacsevna/PythonPlanner.git
-Change directory into the cloned repository:
+```
+2. Change directory into the cloned repository:
+```bash
    cd planner_project
-Run database migrations:
+```
+3. Run database migrations:
+```bash
    python manage.py migrate
-Start the development server:
+```
+4. Start the development server:
+```bash
    python manage.py runserver
+```
 Open your browser and go to http://127.0.0.1:8000/ to see the application in action.
