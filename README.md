@@ -12,6 +12,7 @@ Mini-Scheduler is a simple task management application built with Django. It all
 
 ### Installation Steps
 1. Clone the repository:
+```bash
    git clone https://github.com/lyacsevna/PythonPlanner.git
 Change directory into the cloned repository:
    cd planner_project
