@@ -1,0 +1,95 @@
+body {
+            font-family: 'Arial', sans-serif;
+            background-color: #bbdefb;
+            color: #333;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Центрирование по вертикали */
+            padding: 20px; /* Отступы для мобильных устройств */
+            box-sizing: border-box; /* Учитывать отступы в ширине */
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 400px; /* Ограничение максимальной ширины */
+            margin: auto;
+            padding: 20px; /* Уменьшенный padding */
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #ffffff; /* Белый фон для формы */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Тень для формы */
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff; /* Цвет заголовка */
+            margin-bottom: 20px;
+            font-size: 24px; /* Размер шрифта заголовка */
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold; /* Жирный шрифт для меток */
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Учитывает padding и border в ширине */
+            transition: border-color 0.3s; /* Плавный переход цвета границы */
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: #007bff; /* Цвет границы при фокусе */
+            outline: none; /* Убираем стандартный контур */
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff; /* Цвет кнопки */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px; /* Размер шрифта */
+            transition: background-color 0.3s, transform 0.3s; /* Плавный переход цвета фона и анимация */
+        }
+
+        button:hover {
+            background-color: #0056b3; /* Цвет кнопки при наведении */
+            transform: translateY(-2px); /* Подъем кнопки при наведении */
+        }
+
+        .footer-links {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .footer-links a {
+            color: #007bff; /* Цвет ссылки */
+            text-decoration: none; /* Убираем подчеркивание */
+            transition: color 0.3s; /* Плавный переход цвета */
+        }
+
+        .footer-links a:hover {
+            color: #0056b3; /* Цвет ссылки при наведении */
+        }
+
+        .error {
+            color: red; /* Цвет для отображения ошибок */
+            margin-bottom: 15px;
+        }
