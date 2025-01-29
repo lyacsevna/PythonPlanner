@@ -65,7 +65,6 @@ def register_view(request):
         form = UserCreationForm()
     return render(request, 'register.html', {'form': form})
 
-# Вход пользователя
 
 
 def login_view(request):
@@ -88,7 +87,6 @@ def login_view(request):
     return render(request, 'login.html', {'form': form})
 
 
-# Список задач для аутентифицированного пользователя
 
 @login_required
 def task_list(request):
@@ -143,7 +141,6 @@ def import_task(request):
 
             task_data['user'] = request.user
 
-            # Проверяем, есть ли категория
             category_name = task_data.pop('category_name', None)
             if category_name:
                 category, created = Category.objects.get_or_create(name=category_name)
